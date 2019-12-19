@@ -1,0 +1,9 @@
+C:\Users\Anonim\source\repos\BanApp\BanApp\bin\Debug\BanApp.exe.config
+C:\Users\Anonim\source\repos\BanApp\BanApp\bin\Debug\BanApp.exe
+C:\Users\Anonim\source\repos\BanApp\BanApp\bin\Debug\BanApp.pdb
+C:\Users\Anonim\source\repos\BanApp\BanApp\obj\Debug\BanApp.csprojAssemblyReference.cache
+C:\Users\Anonim\source\repos\BanApp\BanApp\obj\Debug\BanApp.Properties.Resources.resources
+C:\Users\Anonim\source\repos\BanApp\BanApp\obj\Debug\BanApp.csproj.GenerateResource.cache
+C:\Users\Anonim\source\repos\BanApp\BanApp\obj\Debug\BanApp.exe
+C:\Users\Anonim\source\repos\BanApp\BanApp\obj\Debug\BanApp.pdb
+C:\Users\Anonim\source\repos\BanApp\BanApp\obj\Debug\BanApp.main.resources
