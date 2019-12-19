@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             this.btnStart = new System.Windows.Forms.Button();
             this.txtApp = new System.Windows.Forms.TextBox();
             this.txtMin = new System.Windows.Forms.TextBox();
@@ -164,8 +165,9 @@
             this.ClientSize = new System.Drawing.Size(333, 492);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "main";
-            this.Text = "main";
+            this.Text = "BAN-APP";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
