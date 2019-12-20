@@ -23,7 +23,7 @@ namespace BanApp
  
         void start()
         {
-            if (banTimer.Enabled == false)
+            if (!banTimer.Enabled)
             {
                 appname = txtApp.Text;
                 time = Convert.ToInt32(txtMin.Text);
