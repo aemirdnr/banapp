@@ -38,10 +38,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblApp = new System.Windows.Forms.Label();
-            this.lblTime = new System.Windows.Forms.Label();
             this.lblStat = new System.Windows.Forms.Label();
             this.onOff = new System.Windows.Forms.Panel();
             this.banTimer = new System.Windows.Forms.Timer(this.components);
+            this.lblTime = new System.Windows.Forms.Label();
+            this.infoTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -105,8 +106,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.lblApp);
             this.groupBox2.Controls.Add(this.lblTime);
+            this.groupBox2.Controls.Add(this.lblApp);
             this.groupBox2.Controls.Add(this.lblStat);
             this.groupBox2.Controls.Add(this.onOff);
             this.groupBox2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -126,16 +127,6 @@
             this.lblApp.TabIndex = 3;
             this.lblApp.Text = "App name:";
             this.lblApp.Visible = false;
-            // 
-            // lblTime
-            // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(17, 106);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(171, 14);
-            this.lblTime.TabIndex = 2;
-            this.lblTime.Text = "Will be closed in 0 minute.";
-            this.lblTime.Visible = false;
             // 
             // lblStat
             // 
@@ -157,6 +148,21 @@
             // banTimer
             // 
             this.banTimer.Tick += new System.EventHandler(this.banTimer_Tick);
+            // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Location = new System.Drawing.Point(17, 105);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(76, 14);
+            this.lblTime.TabIndex = 4;
+            this.lblTime.Text = "0 Time left.";
+            this.lblTime.Visible = false;
+            // 
+            // infoTimer
+            // 
+            this.infoTimer.Interval = 1000;
+            this.infoTimer.Tick += new System.EventHandler(this.infoTimer_Tick);
             // 
             // main
             // 
@@ -186,9 +192,10 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblApp;
-        private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblStat;
         private System.Windows.Forms.Panel onOff;
         private System.Windows.Forms.Timer banTimer;
+        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Timer infoTimer;
     }
 }

@@ -19,13 +19,8 @@ namespace BanApp
         }
 
         string appname;
-        int time;
-
-        private void btnStart_Click(object sender, EventArgs e)
-        {
-            start();
-        }
-
+        int time,sec,msec,min;
+ 
         void start()
         {
             if (banTimer.Enabled == false)
@@ -35,32 +30,20 @@ namespace BanApp
 
                 if (!string.IsNullOrEmpty(appname) && !string.IsNullOrEmpty(Convert.ToString(time)))
                 {
-                    int min = time;
-                    int hr = min / 60;
-                    int sec = time * 60;
-                    int msec = sec * 1000;
+                    sec = time * 60;
+                    msec = sec * 1000;
 
-                    if (time >= 60)
-                    {
-                        min -= hr * 60;
-
-                        banTimer.Interval = msec;
-
-                    }
-                    else
-                    {
-                        banTimer.Interval = msec;
-                    }
+                    banTimer.Interval = msec;
 
                     //Results gbox
                     lblStat.Text = "Status: ON";
                     lblApp.Text = "App name: " + appname;
                     lblApp.Show();
-                    lblTime.Text = "Will be closed in " + time + " minute.";
                     lblTime.Show();
                     onOff.BackColor = Color.Green;
 
                     banTimer.Start();
+                    infoTimer.Start();
                 }
                 else
                 {
@@ -76,6 +59,7 @@ namespace BanApp
                 {
                     //cancel process
                     banTimer.Stop();
+                    infoTimer.Stop();
 
                     //Results gbox
                     lblStat.Text = "Status: OFF";
@@ -86,7 +70,24 @@ namespace BanApp
             }
         }
 
-        private void banTimer_Tick(object sender, EventArgs e)
+        void timeleft()
+        {
+            if (sec > 60)
+            {
+                min = sec / 60;
+                sec = 1;
+            }
+            else if (sec == 0)
+            {
+                sec = 59;
+                min--;
+            }
+
+            sec--;
+            lblTime.Text = min + " Minute " + sec + " Second left.";
+        }
+
+        void kill()
         {
             appname = txtApp.Text;
             Process[] processes = Process.GetProcesses();
@@ -97,7 +98,7 @@ namespace BanApp
                 if (appList.ProcessName == appname)
                 {
                     appList.Kill();
-                    
+
                     //Results gbox
                     lblStat.Text = "Status: OFF";
                     lblApp.Hide();
@@ -107,6 +108,21 @@ namespace BanApp
                     banTimer.Stop();
                 }
             }
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            start();
+        }
+
+        private void banTimer_Tick(object sender, EventArgs e)
+        {
+            kill();
+        }
+
+        private void infoTimer_Tick(object sender, EventArgs e)
+        {
+            timeleft();
         }
     }
 }
