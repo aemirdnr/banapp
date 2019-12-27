@@ -7,3 +7,4 @@ C:\Users\Anonim\source\repos\BanApp\BanApp\obj\Debug\BanApp.csproj.GenerateResou
 C:\Users\Anonim\source\repos\BanApp\BanApp\obj\Debug\BanApp.exe
 C:\Users\Anonim\source\repos\BanApp\BanApp\obj\Debug\BanApp.pdb
 C:\Users\Anonim\source\repos\BanApp\BanApp\obj\Debug\BanApp.main.resources
+C:\Users\Anonim\source\repos\BanApp\BanApp\obj\Debug\BanApp.lock.resources

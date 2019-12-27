@@ -8,6 +8,9 @@ namespace BanApp
 {
     static class Program
     {
+        /// <summary>
+        /// Uygulamanın ana girdi noktası.
+        /// </summary>
         [STAThread]
         static void Main()
         {

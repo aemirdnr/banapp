@@ -19,11 +19,11 @@ namespace BanApp
         }
 
         string appname;
-        int time,sec,msec,min;
- 
+        int time, sec, msec, min;
+
         void start()
         {
-            if (!banTimer.Enabled)
+            if (!unbanTimer.Enabled)
             {
                 appname = txtApp.Text;
                 time = Convert.ToInt32(txtMin.Text);
@@ -33,7 +33,7 @@ namespace BanApp
                     sec = time * 60;
                     msec = sec * 1000;
 
-                    banTimer.Interval = msec;
+                    unbanTimer.Interval = msec;
 
                     //Results gbox
                     lblStat.Text = "Status: ON";
@@ -42,8 +42,9 @@ namespace BanApp
                     lblTime.Show();
                     onOff.BackColor = Color.Green;
 
-                    banTimer.Start();
+                    unbanTimer.Start();
                     infoTimer.Start();
+                    banTimer.Start();
                 }
                 else
                 {
@@ -58,7 +59,7 @@ namespace BanApp
                 if (ctrl == DialogResult.Yes)
                 {
                     //cancel process
-                    banTimer.Stop();
+                    unbanTimer.Stop();
                     infoTimer.Stop();
 
                     //Results gbox
@@ -98,26 +99,55 @@ namespace BanApp
                 if (appList.ProcessName == appname)
                 {
                     appList.Kill();
-
-                    //Results gbox
-                    lblStat.Text = "Status: OFF";
-                    lblApp.Hide();
-                    lblTime.Hide();
-                    onOff.BackColor = Color.Red;
-
-                    banTimer.Stop();
                 }
             }
         }
 
-        private void btnStart_Click(object sender, EventArgs e)
+        void lockapp()
         {
-            start();
+            if (lblStat.Text == "Status: ON")
+            {
+                DialogResult ctrl = new DialogResult();
+                ctrl = MessageBox.Show("Process will be locked, you can just unlock when time done.", "Lock Process", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (ctrl == DialogResult.Yes)
+                {
+                    @lock lck = new @lock();
+                    lck.unlock.Interval = unbanTimer.Interval;
+                    lck.Show();
+                    this.Hide();
+                }
+            }
+            else
+            {
+                MessageBox.Show("There is no have process, you must ban app if you want lock process.");
+            }
+        }
+
+        private void unbanTimer_Tick(object sender, EventArgs e)
+        {
+            banTimer.Stop();
+
+            //Results gbox
+            lblStat.Text = "Status: OFF";
+            lblApp.Hide();
+            lblTime.Hide();
+            onOff.BackColor = Color.Red;
         }
 
         private void banTimer_Tick(object sender, EventArgs e)
         {
             kill();
+        }
+
+        private void btnLock_Click(object sender, EventArgs e)
+        {
+            lockapp();
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            start();
         }
 
         private void infoTimer_Tick(object sender, EventArgs e)

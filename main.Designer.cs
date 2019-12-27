@@ -35,21 +35,23 @@
             this.txtMin = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnLock = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblTime = new System.Windows.Forms.Label();
             this.lblApp = new System.Windows.Forms.Label();
             this.lblStat = new System.Windows.Forms.Label();
             this.onOff = new System.Windows.Forms.Panel();
-            this.banTimer = new System.Windows.Forms.Timer(this.components);
-            this.lblTime = new System.Windows.Forms.Label();
+            this.unbanTimer = new System.Windows.Forms.Timer(this.components);
             this.infoTimer = new System.Windows.Forms.Timer(this.components);
+            this.banTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(102, 185);
+            this.btnStart.Location = new System.Drawing.Point(102, 173);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(100, 27);
             this.btnStart.TabIndex = 0;
@@ -66,7 +68,7 @@
             // 
             // txtMin
             // 
-            this.txtMin.Location = new System.Drawing.Point(102, 134);
+            this.txtMin.Location = new System.Drawing.Point(102, 125);
             this.txtMin.Name = "txtMin";
             this.txtMin.Size = new System.Drawing.Size(100, 22);
             this.txtMin.TabIndex = 2;
@@ -82,6 +84,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnLock);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtApp);
@@ -90,15 +93,25 @@
             this.groupBox1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(309, 228);
+            this.groupBox1.Size = new System.Drawing.Size(309, 326);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
             // 
+            // btnLock
+            // 
+            this.btnLock.Location = new System.Drawing.Point(102, 218);
+            this.btnLock.Name = "btnLock";
+            this.btnLock.Size = new System.Drawing.Size(100, 39);
+            this.btnLock.TabIndex = 5;
+            this.btnLock.Text = "Lock the process";
+            this.btnLock.UseVisualStyleBackColor = true;
+            this.btnLock.Click += new System.EventHandler(this.btnLock_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(128, 117);
+            this.label2.Location = new System.Drawing.Point(128, 108);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 14);
             this.label2.TabIndex = 4;
@@ -111,12 +124,22 @@
             this.groupBox2.Controls.Add(this.lblStat);
             this.groupBox2.Controls.Add(this.onOff);
             this.groupBox2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 252);
+            this.groupBox2.Location = new System.Drawing.Point(12, 344);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(309, 228);
+            this.groupBox2.Size = new System.Drawing.Size(309, 136);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Results";
+            // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Location = new System.Drawing.Point(17, 105);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(76, 14);
+            this.lblTime.TabIndex = 4;
+            this.lblTime.Text = "0 Time left.";
+            this.lblTime.Visible = false;
             // 
             // lblApp
             // 
@@ -145,24 +168,18 @@
             this.onOff.Size = new System.Drawing.Size(25, 25);
             this.onOff.TabIndex = 0;
             // 
-            // banTimer
+            // unbanTimer
             // 
-            this.banTimer.Tick += new System.EventHandler(this.banTimer_Tick);
-            // 
-            // lblTime
-            // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(17, 105);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(76, 14);
-            this.lblTime.TabIndex = 4;
-            this.lblTime.Text = "0 Time left.";
-            this.lblTime.Visible = false;
+            this.unbanTimer.Tick += new System.EventHandler(this.unbanTimer_Tick);
             // 
             // infoTimer
             // 
             this.infoTimer.Interval = 1000;
             this.infoTimer.Tick += new System.EventHandler(this.infoTimer_Tick);
+            // 
+            // banTimer
+            // 
+            this.banTimer.Tick += new System.EventHandler(this.banTimer_Tick);
             // 
             // main
             // 
@@ -194,8 +211,10 @@
         private System.Windows.Forms.Label lblApp;
         private System.Windows.Forms.Label lblStat;
         private System.Windows.Forms.Panel onOff;
-        private System.Windows.Forms.Timer banTimer;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Timer infoTimer;
+        private System.Windows.Forms.Button btnLock;
+        public System.Windows.Forms.Timer unbanTimer;
+        private System.Windows.Forms.Timer banTimer;
     }
 }
