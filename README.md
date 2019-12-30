@@ -1,4 +1,4 @@
-# BAN-APP
+# BAN APP
 
 With this program you can ban app for a while on your computer.
 
